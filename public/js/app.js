@@ -2386,12 +2386,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['student'],
   methods: {
     status: function status($per) {
       return $per >= 33 ? 'Pass' : 'Fail';
+    },
+    openModal: function openModal() {
+      $('#resultModal').modal('show');
+    },
+    hideModal: function hideModal() {
+      $emit('close');
     }
+  },
+  mounted: function mounted() {
+    this.openModal();
   }
 });
 
@@ -36621,7 +36632,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.modal-active[data-v-15aa0039]{\n\tdisplay:block;\n}\n\n", ""]);
+exports.push([module.i, "\n.modal-active[data-v-15aa0039] {\n  display: block;\n}\n\n", ""]);
 
 // exports
 
@@ -70531,177 +70542,214 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("div", { staticClass: "modal-active" }, [
-      _c("div", { staticClass: "modal-dialog" }, [
-        _c("div", { staticClass: "modal-content" }, [
-          _c("div", { staticClass: "modal-header" }, [
-            _c(
-              "h5",
-              {
-                staticClass: "modal-title",
-                attrs: { id: "exampleModalLabel" }
-              },
-              [_vm._v("Result Card")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "close",
-                attrs: {
-                  type: "button",
-                  "data-dismiss": "modal",
-                  "aria-label": "Close"
-                },
-                on: {
-                  click: function($event) {
-                    return _vm.$emit("close")
+  return _c("div", [
+    _c(
+      "div",
+      {
+        ref: "vuemodal",
+        staticClass: "modal fade",
+        attrs: { id: "resultModal", role: "dialog" }
+      },
+      [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
+              _c("h4", { staticClass: "modal-title" }, [_vm._v("Result Card")]),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "close",
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("close")
+                    }
                   }
-                }
-              },
-              [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-body" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col lead" }, [
-                _vm._v(
-                  "\n                          Student Name : " +
-                    _vm._s(_vm.student.name) +
-                    "\n                      "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col" }, [
-                _vm._v(
-                  "\n                          Roll# : " +
-                    _vm._s(_vm.student.roll_no) +
-                    "\n                      "
-                )
-              ])
+                },
+                [_vm._v("×")]
+              )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col" }, [
-                _vm._v(
-                  "\n                          Father Name : " +
-                    _vm._s(_vm.student.father_name) +
-                    "\n                      "
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col" }, [
-                _vm._v(
-                  "\n                          Contact# : " +
-                    _vm._s(_vm.student.contact) +
-                    "\n                      "
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "table",
-              {
-                staticClass: "mt-3 table table-striped table-bordered",
-                staticStyle: { width: "100%" }
-              },
-              [
-                _vm._m(0),
+            _c("div", { staticClass: "modal-body" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col lead" }, [
+                  _vm._v(
+                    "\n              Student Name : " +
+                      _vm._s(_vm.student.name) +
+                      "\n            "
+                  )
+                ]),
                 _vm._v(" "),
-                _c(
-                  "tbody",
-                  [
-                    _vm._l(_vm.student.results, function(result) {
-                      return _c("tr", { key: result.subject }, [
-                        _c("td", [_vm._v(_vm._s(result.subject))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(result.total_marks))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(result.obtain_marks))]),
-                        _vm._v(" "),
-                        _c("td", [_vm._v(_vm._s(result.grade))]),
-                        _vm._v(" "),
-                        _c("td", [
-                          _vm._v(_vm._s(_vm.status(result.percentage)))
+                _c("div", { staticClass: "col" }, [
+                  _vm._v(
+                    "\n              Roll# : " +
+                      _vm._s(_vm.student.roll_no) +
+                      "\n            "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _vm._v(
+                    "\n              Father Name : " +
+                      _vm._s(_vm.student.father_name) +
+                      "\n            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _vm._v(
+                    "\n              Contact# : " +
+                      _vm._s(_vm.student.contact) +
+                      "\n            "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "table",
+                {
+                  staticClass: "mt-3 table table-striped table-bordered",
+                  staticStyle: { width: "100%" }
+                },
+                [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    [
+                      _vm._l(_vm.student.results, function(result) {
+                        return _c("tr", { key: result.subject }, [
+                          _c("td", [_vm._v(_vm._s(result.subject))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(result.total_marks))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(result.obtain_marks))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(result.grade))]),
+                          _vm._v(" "),
+                          _c("td", [
+                            _vm._v(_vm._s(_vm.status(result.percentage)))
+                          ])
                         ])
-                      ])
-                    }),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "2" } },
-                        [_vm._v(" Total :")]
-                      ),
+                      }),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "3" } },
-                        [_vm._v(_vm._s(_vm.student.total))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "2" } },
-                        [_vm._v(" Obtain :")]
-                      ),
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "2" }
+                          },
+                          [_vm._v(" Total :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "3" }
+                          },
+                          [_vm._v(_vm._s(_vm.student.total))]
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "3" } },
-                        [_vm._v(_vm._s(_vm.student.obtain))]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "2" } },
-                        [_vm._v(" Percentage :")]
-                      ),
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "2" }
+                          },
+                          [_vm._v(" Obtain :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "3" }
+                          },
+                          [_vm._v(_vm._s(_vm.student.obtain))]
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "3" } },
-                        [
-                          _vm._v(
-                            _vm._s(
-                              (
-                                (_vm.student.obtain * 100) /
-                                _vm.student.total
-                              ).toFixed(2)
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "2" }
+                          },
+                          [_vm._v(" Percentage :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "3" }
+                          },
+                          [
+                            _vm._v(
+                              _vm._s(
+                                (
+                                  (_vm.student.obtain * 100) /
+                                  _vm.student.total
+                                ).toFixed(2)
+                              )
                             )
-                          )
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c("tr", [
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "2" } },
-                        [_vm._v(" Remarks :")]
-                      ),
+                          ]
+                        )
+                      ]),
                       _vm._v(" "),
-                      _c(
-                        "td",
-                        { staticClass: "text-center", attrs: { colspan: "3" } },
-                        [_vm._v(_vm._s(_vm.student.remarks))]
-                      )
-                    ])
-                  ],
-                  2
-                )
-              ]
-            )
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "2" }
+                          },
+                          [_vm._v(" Remarks :")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "td",
+                          {
+                            staticClass: "text-center",
+                            attrs: { colspan: "3" }
+                          },
+                          [_vm._v(_vm._s(_vm.student.remarks))]
+                        )
+                      ])
+                    ],
+                    2
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-footer" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", "data-dismiss": "modal" },
+                  on: {
+                    click: function($event) {
+                      return _vm.$emit("close")
+                    }
+                  }
+                },
+                [_vm._v("Close")]
+              )
+            ])
           ])
         ])
-      ])
-    ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [
